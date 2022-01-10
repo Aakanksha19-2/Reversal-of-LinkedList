@@ -1,0 +1,58 @@
+// REVERSING THE LINKED LIST BY THE ITERATIVE METHOD : 
+public class p1 {
+
+   Node head;
+   private int size;
+ 
+   p1 () {
+       size = 0;
+   }
+ 
+   public class Node {
+       String data;
+       Node next;
+ 
+       Node(String data) {
+           this.data = data;
+           this.next = null;
+           size++;
+       }
+   }
+   
+   public void revIterate(){
+        Node prev = head;
+        Node curr = head.next;
+        
+        if(head == null || head.next ==null ){
+            return;
+        }
+        while(curr != null){
+            Node Next = curr.next;
+            //update
+            curr.next= prev;
+            prev = curr;
+            curr = Next;
+        }
+        head.next = null;
+        head=prev;
+
+    } 
+    
+    public void printList() {
+    Node currNode = head;
+
+    while(currNode != null) {
+        System.out.print(currNode.data+" -> ");
+        currNode = currNode.next;
+    }
+
+    System.out.println("null");
+    }
+}
+
+public static void main (String argd[]){
+  p1 l = new p1();
+  l.revIterate();
+  l.printList();
+  
+}
